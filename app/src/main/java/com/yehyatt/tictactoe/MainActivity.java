@@ -6,6 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
 
@@ -22,6 +27,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ////Ads/////////
+        MobileAds.initialize(this, "ca-app-pub-7056772252838511~4864726405");
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-7056772252838511/1510714419");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        /////////////////////////////
 
         block1 = (Button) findViewById(R.id.bt_block1);
         block1.setOnClickListener(this);
